@@ -38,10 +38,11 @@ runs:
       run: pip install aws-sam-cli
       shell: bash
 
-    - name: Setup Params & Workspace
+    - name: Setup Env
       run: |
-        export INPUT_PARAMS=${{ inputs.params }}
-        export INPUT_WORKSPACE=${{ inputs.workspace }}
+        echo "INPUT_PARAMS=${{ inputs.params }}" >> $GITHUB_ENV
+        echo "INPUT_WORKSPACE=${{ inputs.workspace }}" >> $GITHUB_ENV
+        echo "GITHUB_WORKSPACE=${{ github.workspace }}" >> $GITHUB_ENV
       shell: bash
 
     - name: Build AWS SAM
