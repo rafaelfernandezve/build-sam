@@ -38,7 +38,13 @@ runs:
       run: pip install aws-sam-cli
       shell: bash
 
-    - name: Setup AWS SAM CLI
+    - name: Setup Params & Workspace
+      run: |
+        EXPORT INPUT_PARAMS=${{ inputs.params }}
+        EXPORT INPUT_WORKSPACE=${{ inputs.workspace }}
+      shell: bash
+
+    - name: Build AWS SAM
       run: ${{ github.action_path }}/build-sam.sh
       shell: bash
 
