@@ -17,12 +17,18 @@ runs:
 
     - name: Setup Golang
       uses: actions/setup-go@v3
+      with:
+        go-version: '^1.18'
 
     - name: Setup NodeJS
       uses: actions/setup-node@v3
+      with:
+        node-version: 16
 
     - name: Setup Python
       uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
 
     - name: Setup AWS CLI
       run: pip install awscli
