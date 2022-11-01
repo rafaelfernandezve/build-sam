@@ -40,8 +40,8 @@ runs:
 
     - name: Setup Params & Workspace
       run: |
-        EXPORT INPUT_PARAMS=${{ inputs.params }}
-        EXPORT INPUT_WORKSPACE=${{ inputs.workspace }}
+        export INPUT_PARAMS=${{ inputs.params }}
+        export INPUT_WORKSPACE=${{ inputs.workspace }}
       shell: bash
 
     - name: Build AWS SAM
