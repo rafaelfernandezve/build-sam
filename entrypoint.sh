@@ -7,11 +7,11 @@ function main() {
     if [ "${INPUT_WORKSPACE}" != "" ]; then
         cd ${INPUT_WORKSPACE}
     fi
-    
+
     echo "Run AWS SAM build for project"
     set -o pipefail
 
-    sam build ${INPUT_PARAMS}
+    sam build -b ${GITHUB_WORKSPACE}/dist ${INPUT_PARAMS}
 
     exitCode=${?}
 
