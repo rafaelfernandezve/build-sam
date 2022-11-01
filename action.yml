@@ -42,7 +42,8 @@ runs:
     - name: Build AWS SAM
       run: |
          cd ${{ inputs.workspace }}
-         sam build -b ${{ github.workspace }}/dist ${{ inputs.params }}
+         sam build -b ${{ github.workspace }}/dist ${{ inputs.params }} && \
+         cp samconfig.toml ${{ github.workspace }}/dist/samconfig.toml
       shell: bash
 
     - name: SonarQube Code Analysis
