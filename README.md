@@ -7,10 +7,6 @@ Build SAM GitHub Actions allows you to build AWS SAM projects
 ```yaml
 on: [push]
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,11 +20,6 @@ Output Artifact: dist
 
 - `params` **Optional** AWS SAM build params
 - `workspace` **Optional** Relative path under $GITHUB_WORKSPACE to place the project
-
-## Environment
-
-- `GITHUB_TOKEN` **Required**
-- `SONAR_TOKEN` **Required**
 
 ## Authors
 

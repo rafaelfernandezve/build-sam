@@ -46,9 +46,6 @@ runs:
         if [ -e samconfig.toml ];then cp samconfig.toml dist/samconfig.toml; fi
       shell: bash
 
-    - name: SonarQube Code Analysis
-      uses: SonarSource/sonarcloud-github-action@master
-
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
