@@ -41,9 +41,9 @@ runs:
 
     - name: Build AWS SAM
       run: |
-         cd ${{ inputs.workspace }}
-         sam build -b ${{ github.workspace }}/dist ${{ inputs.params }} && \
-         cp samconfig.toml ${{ github.workspace }}/dist/samconfig.toml
+        cd ${{ inputs.workspace }}
+        sam build -b dist ${{ inputs.params }} && \
+        if [ -e samconfig.toml ];then cp samconfig.toml dist/samconfig.toml; fi
       shell: bash
 
     - name: SonarQube Code Analysis
@@ -53,4 +53,4 @@ runs:
       uses: actions/upload-artifact@v3
       with:
         name: dist
-        path: dist
+        path: ${{ inputs.workspace }}/dist
