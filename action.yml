@@ -9,6 +9,7 @@ inputs:
   workspace:
     description: 'Relative path under $GITHUB_WORKSPACE to place the project'
     required: false
+    default: .
 runs:
   using: 'composite'
   steps:
@@ -38,15 +39,10 @@ runs:
       run: pip install aws-sam-cli
       shell: bash
 
-    - name: Setup Env
-      run: |
-        echo "INPUT_PARAMS=${{ inputs.params }}" >> $GITHUB_ENV
-        echo "INPUT_WORKSPACE=${{ inputs.workspace }}" >> $GITHUB_ENV
-        echo "GITHUB_WORKSPACE=${{ github.workspace }}" >> $GITHUB_ENV
-      shell: bash
-
     - name: Build AWS SAM
-      run: ${{ github.action_path }}/build-sam.sh
+      run: |
+         cd ${{ inputs.workspace }}
+         sam build -b ${{ github.workspace }}/dist ${{ inputs.params }}
       shell: bash
 
     - name: SonarQube Code Analysis

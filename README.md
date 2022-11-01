@@ -25,10 +25,6 @@ Output Artifact: dist
 - `params` **Optional** AWS SAM build params
 - `workspace` **Optional** Relative path under $GITHUB_WORKSPACE to place the project
 
-## Outputs
-
-- `status` Returned status code.
-
 ## Environment
 
 - `GITHUB_TOKEN` **Required**
