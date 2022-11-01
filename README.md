@@ -14,19 +14,10 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: develop
     steps:
-      - uses: actions/checkout@v3
       - uses: protectasecurity/build-sam@v1
-        with:
-          params: '--use-container'
-      - uses: SonarSource/sonarcloud-github-action@master
-      - uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: dist
 ```
-Output: /dist
+Output Artifact: dist
 
 
 ## Inputs
@@ -37,6 +28,11 @@ Output: /dist
 ## Outputs
 
 - `status` Returned status code.
+
+## Environment
+
+- `GITHUB_TOKEN` **Required**
+- `SONAR_TOKEN` **Required**
 
 ## Authors
 
