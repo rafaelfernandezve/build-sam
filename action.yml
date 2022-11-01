@@ -39,7 +39,7 @@ runs:
       shell: bash
 
     - name: Setup AWS SAM CLI
-      run: build-sam.sh
+      run: ${{ github.action_path }}/build-sam.sh
       shell: bash
 
     - name: SonarQube Code Analysis
