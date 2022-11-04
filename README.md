@@ -15,12 +15,6 @@ jobs:
 ```
 Output Artifact: dist
 
-
-## Inputs
-
-- `params` **Optional** AWS SAM build params
-- `workspace` **Optional** Relative path under $GITHUB_WORKSPACE to place the project
-
 ## Authors
 
 - [Ronnie Ayala](https://github.com/ronnieacs)

@@ -2,14 +2,6 @@ name: 'Build SAM GitHub Actions'
 branding:
   icon: 'terminal'
   color: 'orange'
-inputs:
-  params:
-    description: 'AWS SAM build params'
-    required: false
-  workspace:
-    description: 'Relative path under $GITHUB_WORKSPACE to place the project'
-    required: false
-    default: .
 runs:
   using: 'composite'
   steps:
@@ -41,18 +33,17 @@ runs:
 
     - name: Build AWS SAM
       run: |
-        cd ${{ inputs.workspace }}
-        sam build -b dist ${{ inputs.params }} && \
+        sam build -b dist && \
         if [ -e samconfig.toml ];then cp samconfig.toml dist/samconfig.toml; fi
       shell: bash
 
     - name: Compress Artifact
       run: |
-        tar -czvf ${{ inputs.workspace }}/dist.tar.gz ${{ inputs.workspace }}/dist
+        tar -czvf dist.tar.gz ./dist
       shell: bash
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: dist
-        path: ${{ inputs.workspace }}/dist.tar.gz
+        path: dist.tar.gz
