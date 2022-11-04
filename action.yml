@@ -48,11 +48,11 @@ runs:
 
     - name: Compress Artifact
       run: |
-        tar -czvf ${{ inputs.workspace }}/dist/dist.tar.gz ${{ inputs.workspace }}/dist
+        tar -czvf ${{ inputs.workspace }}/dist.tar.gz ${{ inputs.workspace }}/dist
       shell: bash
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: dist
-        path: ${{ inputs.workspace }}/dist/dist.tar.gz
+        path: ${{ inputs.workspace }}/dist.tar.gz
