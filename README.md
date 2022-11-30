@@ -15,6 +15,10 @@ jobs:
 ```
 Output Artifact: dist
 
+## Inputs
+
+- `config` **Optional** AWS SAM configutation file path
+
 ## Authors
 
 - [Ronnie Ayala](https://github.com/ronnieacs)

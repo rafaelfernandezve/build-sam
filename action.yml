@@ -2,6 +2,11 @@ name: 'Build SAM GitHub Actions'
 branding:
   icon: 'terminal'
   color: 'orange'
+inputs:
+  config:
+    description: 'AWS SAM configutation file path'
+    required: false
+    default: samconfig.toml
 runs:
   using: 'composite'
   steps:
@@ -34,7 +39,7 @@ runs:
     - name: Build AWS SAM
       run: |
         sam build -b dist && \
-        if [ -e samconfig.toml ];then cp samconfig.toml dist/samconfig.toml; fi
+        if [ -e ${{ inputs.config }} ];then cp ${{ inputs.config }} dist/samconfig.toml; fi
       shell: bash
 
     - name: Compress Artifact
