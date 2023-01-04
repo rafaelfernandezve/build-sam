@@ -33,7 +33,9 @@ runs:
       shell: bash
 
     - name: Setup AWS SAM CLI
-      run: pip install aws-sam-cli
+      run: pip install pip --upgrade && \
+           $(dirname $(readlink $(which sam)))/pip install --force-reinstall "cryptography==38.0.4" && \
+           pip install aws-sam-cli 
       shell: bash
 
     - name: Build AWS SAM
